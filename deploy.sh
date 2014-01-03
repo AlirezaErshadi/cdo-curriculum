@@ -11,6 +11,8 @@ then
   echo "where target is the capistrano target you wish to deploy to."
 fi
 
+git submodule foreach git pull
+
 (
   cd blockly-core
   ./build_fast.sh
