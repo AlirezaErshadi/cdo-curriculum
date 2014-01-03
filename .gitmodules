@@ -1,0 +1,15 @@
+[submodule "dashboard"]
+	path = dashboard
+	url = https://github.com/code-dot-org/dashboard.git
+[submodule "blockly"]
+	path = blockly
+	url = https://github.com/code-dot-org/blockly.git
+[submodule "blockly-core"]
+	path = blockly-core
+	url = https://github.com/code-dot-org/blockly-core
+[submodule "cdo-i18n"]
+	path = cdo-i18n
+	url = https://github.com/code-dot-org/cdo-i18n
+[submodule "blockly-core-i18n"]
+	path = blockly-core-i18n
+	url = https://github.com/code-dot-org/blockly-core-i18n
