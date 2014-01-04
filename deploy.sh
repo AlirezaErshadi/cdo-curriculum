@@ -16,6 +16,7 @@ git submodule update --recursive
 
 (
   cd blockly-core
+  chmod +x ../closure-library-read-only/closure/bin/build/closurebuilder.py
   ./build_fast.sh
   cp blockly_compressed.js ../blockly/lib/blockly
 )
