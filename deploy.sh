@@ -11,7 +11,8 @@ then
   echo "where target is the capistrano target you wish to deploy to."
 fi
 
-git submodule foreach git pull
+git submodule update --recursive
+./dashboard/build_deps.sh
 
 (
   cd blockly-core
@@ -28,5 +29,5 @@ git submodule foreach git pull
 
 (
   cd dashboard
-  cap $1 deploy
+  bundle exec cap $1 deploy
 )

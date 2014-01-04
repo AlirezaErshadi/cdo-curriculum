@@ -13,6 +13,6 @@
 [submodule "blockly-core-i18n"]
 	path = blockly-core-i18n
 	url = https://github.com/code-dot-org/blockly-core-i18n
-[submodule "closure-library"]
-	path = closure-library
+[submodule "closure-library-read-only"]
+	path = closure-library-read-only
 	url = https://code.google.com/p/closure-library/
