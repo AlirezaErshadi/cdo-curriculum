@@ -1,8 +1,6 @@
 #!/bin/bash
-# build blockly-core
-# build blockly
-# release blockly
-# run cap arg1 deploy
+
+GIT_ROOT=`git rev-parse --show-toplevel`
 
 if [ -z "$1" ]
 then
@@ -18,24 +16,9 @@ fi
 
 git submodule update --recursive
 
-(
-  cd ../blockly-core
-  chmod +x ../closure-library-read-only/closure/bin/build/closurebuilder.py
-  ./build_fast.sh
-  cp blockly_compressed.js ../blockly/lib/blockly
-)
-
-(
-  cd ../blockly
-  LAST_TAG=`git describe --abbrev=0 --tags`
-  LAST_TAGGED_COMMIT=`git rev-list $LAST_TAG | head -n 1`
-  LAST_COMMIT=`git log --format="%H" | head -n1`
-  if [[ $LAST_COMMIT -ne $LAST_TAGGED_COMMIT ]]; then
-    npm install
-    grunt build
-    ./script/release
-  fi
-)
+$GIT_ROOT/build_scripts/build_submodule blockly-core
+cp $GIT_ROOT/blockly-core/blockly_compressed.js $GIT_ROOT/blockly/lib/blockly
+$GIT_ROOT/build_scripts/build_submodule blockly
 
 (
   cd ../dashboard
