@@ -1,11 +1,11 @@
 #!/bin/bash
 (
-  cd blockly
+  cd ../blockly
   npm install
   grunt build
 )
 
 (
-  cd dashboard
+  cd ../dashboard
   bundle exec rake blockly:dev['../blockly']
 )
