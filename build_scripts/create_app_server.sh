@@ -16,11 +16,14 @@ json_value() {
 }
 
 instance_id=`aws ec2 run-instances --image-id ami-a73264ce --count 1 \
---instance-type t1.micro --key-name production-code-org \
+--instance-type m1.medium --key-name production-code-org \
 --security-groups website-dashboard --region $region | json_value InstanceId`
 
 #ec2-create-tags $instance_id --tag name=$1
 aws ec2 create-tags --resources $instance_id --tags Key=Name,Value=$1 --region $region > /dev/null
+
+echo "Machine created with instance id: $instance_id and name: $1"
+echo "Pinging aws for dns, this may take a minute..."
 
 public_dns="null"
 while [ $public_dns = "null" ] ; do
