@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GIT_ROOT=`git rev-parse --show-toplevel`
+source $GIT_ROOT/build_scripts/utility.sh
 
 if [ -z "$1" ]
 then
@@ -18,13 +19,14 @@ git submodule foreach git checkout master
 git submodule foreach git pull
 git add `git submodule foreach --quiet git rev-parse --show-toplevel`
 
-$GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core
-cp $GIT_ROOT/blockly-core/blockly_compressed.js $GIT_ROOT/blockly/lib/blockly
-$GIT_ROOT/build_scripts/deploy_submodule.sh blockly
+$GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core; error_check
+cp $GIT_ROOT/blockly-core/blockly_compressed.js $GIT_ROOT/blockly/lib/blockly; error_check
+$GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
 
 (
   cd ../dashboard
   bundle exec cap $1 deploy
 )
+error_check "Dashboard failed to deploy"
 
 $GIT_ROOT/build_scripts/publish_tag.sh
