@@ -1,5 +1,7 @@
 #!/bin/bash
 
+GIT_ROOT=`git rev-parse --show-toplevel`
+
 if [ $# -lt 1 ]
 then
   echo "usage: $0 <name>"
@@ -34,3 +36,6 @@ while [ $public_dns = "null" ] ; do
 done
 
 echo "Launched new machine with public dns: $public_dns"
+echo "Installing dependencies on $public_dns"
+
+ssh -i ~/.ssh/production-code-org.pem $public_dns 'sudo bash -s' < $GIT_ROOT/build_scripts/install_deps.sh
