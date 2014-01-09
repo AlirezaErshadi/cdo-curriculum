@@ -26,3 +26,5 @@ $GIT_ROOT/build_scripts/deploy_submodule.sh blockly
   cd ../dashboard
   bundle exec cap $1 deploy
 )
+
+$GIT_ROOT/build_scripts/publish_tag.sh
