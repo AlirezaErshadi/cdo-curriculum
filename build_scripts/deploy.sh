@@ -14,8 +14,9 @@ if [ -z "$AWS_SECRET_ACCESS_KEY" -o -z "$AWS_ACCESS_KEY_ID" ]; then
   exit 1
 fi
 
-git submodule foreach git checkout deploy
+git submodule foreach git checkout master
 git submodule foreach git pull
+git add `git submodule foreach --quiet git rev-parse --show-toplevel`
 
 $GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core
 cp $GIT_ROOT/blockly-core/blockly_compressed.js $GIT_ROOT/blockly/lib/blockly
