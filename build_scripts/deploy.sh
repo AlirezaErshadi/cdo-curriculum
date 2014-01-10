@@ -29,4 +29,4 @@ $GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
 )
 error_check "Dashboard failed to deploy"
 
-$GIT_ROOT/build_scripts/publish_tag.sh
+# $GIT_ROOT/build_scripts/publish_tag.sh
