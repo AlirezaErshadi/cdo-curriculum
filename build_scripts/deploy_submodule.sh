@@ -24,6 +24,9 @@ last_commit=`git rev-list --all $GIT_ROOT/$1 | head -n 1`
 last_commit_time=$(time_of_commit $last_commit)
 # check if last_commit is newer than last_tagged_commit
 if [[ last_commit_time -gt last_deploy_time ]] ; then
-  $1/deploy.sh # Tell submodule to build itself.
-  error_check "$1 couldn't deploy."
+  (
+    cd $GIT_ROOT/$1
+    ./deploy.sh # Tell submodule to build itself.
+    error_check "$1 couldn't deploy."
+  )
 fi
