@@ -1,11 +1,14 @@
 #!/bin/bash
+
+GIT_ROOT=`git rev-parse --show-toplevel`
+
 (
-  cd ../blockly
+  cd $GIT_ROOT/blockly
   npm install
   grunt build
 )
 
 (
-  cd ../dashboard
+  cd $GIT_ROOT/dashboard
   bundle exec rake blockly:dev['../blockly']
 )
