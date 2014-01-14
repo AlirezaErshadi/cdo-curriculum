@@ -1,22 +1,9 @@
-aptitude update
-
-# Production service dependencies.
-aptitude -y install \
-  build-essential \
-  git \
-  mysql-client \
-  libssl-dev \
-  mysql-server \
-  libmysqlclient-dev \
-  libreadline-dev \
-  libncurses-dev \
-  nginx \
-  libmagickcore-dev \
-  libmagickwand-dev
+#!/bin/bash
 
 export CDO_BUILD_PATH=/usr/src
 
 if [[ ! -f $CDO_BUILD_PATH/ruby-2.0.0-p247.tar.gz ]]; then
+  echo "installing ruby"
   wget -P $CDO_BUILD_PATH https://s3.amazonaws.com/cdo-dist/ruby/ruby-2.0.0-p247.tar.gz
   tar -C $CDO_BUILD_PATH -xzvf $CDO_BUILD_PATH/ruby-2.0.0-p247.tar.gz
   (

@@ -37,10 +37,12 @@ done
 
 echo "Installing dependencies on $public_dns"
 
-until ssh -i ~/.ssh/production-code-org.pem $public_dns 'sudo bash -s' < $GIT_ROOT/build_scripts/install_deps.sh
+until ssh -i ~/.ssh/production-code-org.pem $public_dns 'echo success'
 do
  echo "Waiting for $public_dns to respond."
  sleep 3
 done
+ssh -i ~/.ssh/production-code-org.pem $public_dns 'sudo bash -s' < $GIT_ROOT/build_scripts/apt_packages.sh
+ssh -i ~/.ssh/production-code-org.pem $public_dns 'sudo bash -s' < $GIT_ROOT/build_scripts/packages.sh
 
 echo $public_dns

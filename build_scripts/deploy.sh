@@ -3,17 +3,26 @@
 GIT_ROOT=`git rev-parse --show-toplevel`
 source $GIT_ROOT/build_scripts/utility.sh
 
-if [ -z "$1" ]
+if [ $# -lt 1 ]
 then
-  echo "usage: ./deploy.sh <target>"
-  echo "where target is the capistrano target you wish to deploy to."
+  echo "usage: ./deploy.sh <target> [cdo-secrets]"
+  echo "target: capistrano target you wish to deploy to."
+  echo "cdo-secrets: deaults to ../../cdo-secrets"
   exit 1
 fi
 
-if [ -z "$AWS_SECRET_ACCESS_KEY" -o -z "$AWS_ACCESS_KEY_ID" ]; then
-  echo 'AWS environment is not defined. Use cdo-env for secrets' > /dev/stderr
+if [ -z $2 ]; then
+  secrets=$GIT_ROOT/../cdo-secrets
+else
+  secrets=$2
+fi
+
+if [ ! -d $secrets ]; then
+  echo "Cannot find cdo-secrets at path: $secrets"
   exit 1
 fi
+
+source $secrets/exports
 
 git submodule foreach git checkout master
 git submodule foreach git pull
@@ -25,7 +34,7 @@ $GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
 
 (
   cd ../dashboard
-  bundle exec cap $1 deploy
+  bundle exec cap $1 deploy -s secret=$secrets
 )
 error_check "Dashboard failed to deploy"
 
