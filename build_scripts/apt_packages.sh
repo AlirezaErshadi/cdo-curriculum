@@ -14,5 +14,4 @@ aptitude -y install \
   libncurses-dev \
   nginx \
   libmagickcore-dev \
-  libmagickwand-dev \
-  g++
+  libmagickwand-dev
