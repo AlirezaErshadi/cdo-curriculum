@@ -17,6 +17,8 @@ else
   secrets=$2
 fi
 
+blockly=$GIT_ROOT/blockly
+
 if [ ! -d $secrets ]; then
   echo "Cannot find cdo-secrets at path: $secrets"
   exit 1
@@ -34,7 +36,7 @@ $GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
 
 (
   cd ../dashboard
-  bundle exec cap $1 deploy -s secret=$secrets
+  bundle exec cap $1 deploy -s secret=$secrets -s blockly=$blockly
 )
 error_check "Dashboard failed to deploy"
 
