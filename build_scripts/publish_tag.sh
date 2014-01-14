@@ -1,10 +1,5 @@
-GIT_ROOT=`git rev-parse --show-toplevel`
-
-current=`cat $GIT_ROOT/VERSION`
+current=`git describe --abbrev=0 --tags`
 new=$((current + 1))
 
-echo $new > $GIT_ROOT/VERSION
-git add $GIT_ROOT/VERSION
 git tag $new
-git commit -m "[Deployed version $new]"
 git push --tags
