@@ -40,5 +40,3 @@ $GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
   bundle exec cap $1 deploy -s secrets=$secrets -s blockly=$blockly
 )
 error_check "Dashboard failed to deploy"
-
-$GIT_ROOT/build_scripts/publish_tag.sh
