@@ -20,13 +20,12 @@ tag=`git describe --abbrev=0 --tags`
 last_deploy_commit=`git rev-list $tag | head -n 1`
 last_deploy_time=$(time_of_commit $last_deploy_commit)
 
-last_commit=`git rev-list --all $GIT_ROOT/$1 | head -n 1`
-last_commit_time=$(time_of_commit $last_commit)
 # check if last_commit is newer than last_tagged_commit
-if [[ last_commit_time -gt last_deploy_time ]] ; then
-  (
-    cd $GIT_ROOT/$1
+(
+  cd $GIT_ROOT/$1
+  last_commit_time=`git log -1 --format="%at"`
+  if [[ last_commit_time -gt last_deploy_time ]] ; then
     ./deploy.sh # Tell submodule to build itself.
     error_check "$1 couldn't deploy."
-  )
-fi
+  fi
+)
