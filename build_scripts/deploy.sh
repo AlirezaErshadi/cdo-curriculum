@@ -39,7 +39,7 @@ $GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
 
 (
   cd ../dashboard
-  bundle install
+  sudo bundle install
   bundle exec cap $1 deploy:setup -s secrets=$secrets
   bundle exec cap $1 deploy -s secrets=$secrets -s blockly=$blockly
 )
