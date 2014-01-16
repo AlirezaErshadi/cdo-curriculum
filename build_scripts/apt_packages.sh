@@ -1,6 +1,9 @@
 #!/bin/bash
 
-aptitude update
+sudo dpkg --configure -a
+sudo apt-get -f install
+sudo apt-get update
+sudo apt-get dist-upgrade
 
 # Production service dependencies.
 aptitude -y install \
