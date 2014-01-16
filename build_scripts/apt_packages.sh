@@ -14,4 +14,5 @@ aptitude -y install \
   libncurses-dev \
   nginx \
   libmagickcore-dev \
-  libmagickwand-dev
+  libmagickwand-dev \
+  openjdk-7-jre-headless
