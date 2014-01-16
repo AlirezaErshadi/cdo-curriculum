@@ -15,4 +15,4 @@ ssh $server sudo apt-get install -y git
 ssh $server git clone --recursive $git_url
 ssh $server crontab -u ubuntu /home/ubuntu/cdo-curriculum/build_scripts/deploy.cron
 scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh
-scp $GIT_ROOT/../cdo-secrets $server:/home/ubuntu
+scp -r $GIT_ROOT/../cdo-secrets $server:/home/ubuntu
