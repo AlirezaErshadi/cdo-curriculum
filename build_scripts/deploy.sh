@@ -26,9 +26,12 @@ fi
 
 source $secrets/exports
 
-git submodule foreach git checkout master
-git submodule foreach git pull
-git add `git submodule foreach --quiet git rev-parse --show-toplevel`
+(
+  cd $GIT_ROOT
+  git submodule foreach git checkout master
+  git submodule foreach git pull
+  git add `git submodule foreach --quiet git rev-parse --show-toplevel`
+)
 
 $GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core; error_check
 cp $GIT_ROOT/blockly-core/blockly_compressed.js $GIT_ROOT/blockly/lib/blockly; error_check
