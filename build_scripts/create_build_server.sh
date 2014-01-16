@@ -12,4 +12,5 @@ server=$1
 git_url=`git config --get remote.origin.url`
 ssh $server sudo apt-get install -y git
 ssh $server git clone $git_url
-ssh $server crontab -u ubuntu ~/cdo-curriculum/build_scripts/deploy.cron
+ssh $server crontab -u ubuntu /home/ubuntu/cdo-curriculum/build_scripts/deploy.cron
+scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh
