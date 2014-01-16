@@ -6,7 +6,7 @@ sudo apt-get update
 sudo apt-get dist-upgrade
 
 # Production service dependencies.
-aptitude -y install \
+sudo apt-get -y install \
   build-essential \
   git \
   mysql-client \
