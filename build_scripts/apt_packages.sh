@@ -1,14 +1,15 @@
 #!/bin/bash
 
-sudo dpkg --configure -a
-sudo apt-get -f install
-sudo apt-get update
-sudo apt-get dist-upgrade
+export DEBIAN_FRONTEND=noninteractive
 
-echo "BEGIN PACKAGE INSTALL"
+until sudo apt-get install -y build-essential
+do
+  echo "Waiting on apt-get update to work."
+  sudo apt-get update
+done
 
 # Production service dependencies.
-sudo apt-get -y install \
+sudo aptitude -y install \
   git \
   mysql-client \
   libssl-dev \
@@ -19,5 +20,4 @@ sudo apt-get -y install \
   nginx \
   libmagickcore-dev \
   libmagickwand-dev \
-  openjdk-7-jre-headless \
-  build-essential
+  openjdk-7-jre-headless
