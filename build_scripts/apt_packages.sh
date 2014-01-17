@@ -5,9 +5,10 @@ sudo apt-get -f install
 sudo apt-get update
 sudo apt-get dist-upgrade
 
+echo "BEGIN PACKAGE INSTALL"
+
 # Production service dependencies.
 sudo apt-get -y install \
-  build-essential \
   git \
   mysql-client \
   libssl-dev \
@@ -18,4 +19,5 @@ sudo apt-get -y install \
   nginx \
   libmagickcore-dev \
   libmagickwand-dev \
-  openjdk-7-jre-headless
+  openjdk-7-jre-headless \
+  build-essential
