@@ -1,3 +1,4 @@
+GIT_ROOT=`git rev-parse --show-toplevel`
 if [ $# -lt 1 ]
 then
   echo "usage: $0 <server>"
@@ -7,15 +8,18 @@ then
 fi
 
 server=$1
-GIT_ROOT=`git rev-parse --show-toplevel`
 
-scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh
-scp -r $GIT_ROOT/dashboard/scripts/archive $server:/tmp
-scp $GIT_ROOT/build_scripts/archive.cron $server:/tmp
+scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh/
+scp -r $GIT_ROOT/dashboard/scripts/archive $server:/tmp/
+scp -r $GIT_ROOT/dashboard/config/nginx-archive.conf $server:/etc/nginx/nginx.conf
+scp $GIT_ROOT/build_scripts/archive.cron $server:/tmp/
 
 ssh $server << EOF
   sudo mkdir -p /etc/cdo
+  sudo mkdir -p /mnt/backups/
+  sudo chown -R ubuntu /mnt/
   sudo cp /tmp/archive/* /etc/cdo/
   sudo cp /tmp/archive.cron /etc/cron.d/cdo
   sudo crontab -u ubuntu /etc/cron.d/cdo
+  sudo nginx -s reload
 EOF
