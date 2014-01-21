@@ -80,18 +80,15 @@ Set Up
 
 Git and Pull Request
 --------------------
-1. Fork the repo, by clicking on the "Fork" button at the right corner.
-2. Add tracking of your remote repo
-    - `git remote add XXX git@@ithub.com:XXX/cdo-curriculum.git`
-3. Checkout a new branch for a new feature
+1. Checkout a new branch for a new feature
     - `git checkout -b branch_name`
-4. Develop the new feature and push the changes to **your** repository
+2. Develop the new feature and push the changes to **your** repository
     - `git add YYY`
     - `git commit -m "ZZZ"`
-    - `git push XXX branch_name`
-5. Go to your GitHub repo
-    - [https://github.com/XXX/cdo-curriculum](https://github.com/XXX/cdo-curriculum)
-6. Click on the "Pull Request" link, and send out a PR for others to review.
+    - `git push origin branch_name`
+3. Go to your GitHub repo
+    - [https://github.com/code-dot-org/cdo-curriculum](https://github.com/code-dot-org/cdo-curriculum)
+4. Click on the "Pull Request" link, and send out a PR for others to review.
 
 Additional Setup for I18n
 -------------------------
