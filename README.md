@@ -115,3 +115,10 @@ Additional Setup for I18n
     - Add and push the changed files.
     - Copy the files to blockly-core
         1. cp msg/js/*.js ../blockly/lib/blockly/
+
+## Gotchas
+1. If you see a Encoding::InvalidByteSequenceError:
+    - force Ruby to use UTF-8 encoding `export RUBYOPT=-Ku`
+2. If you see an error related to enforce_available_locales= being undefined:
+    - install an older version of crowdin-cli `gem install crowdin-cli -v 0.2.2`
+
