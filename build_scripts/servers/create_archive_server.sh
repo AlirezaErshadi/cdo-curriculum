@@ -11,7 +11,7 @@ server=$1
 
 scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh/
 scp -r $GIT_ROOT/dashboard/scripts/archive $server:/tmp/
-scp -r $GIT_ROOT/dashboard/config/nginx-archive.conf $server:/etc/nginx/nginx.conf
+scp -r $GIT_ROOT/dashboard/config/nginx-archive.conf $server:/tmp/
 scp $GIT_ROOT/build_scripts/archive.cron $server:/tmp/
 
 ssh $server << EOF
@@ -20,6 +20,8 @@ ssh $server << EOF
   sudo chown -R ubuntu /mnt/
   sudo cp /tmp/archive/* /etc/cdo/
   sudo cp /tmp/archive.cron /etc/cron.d/cdo
+  sudo cp /tmp/nginx-archive.conf /etc/nginx/nginx.conf
   sudo crontab -u ubuntu /etc/cron.d/cdo
+  sudo /etc/init.d/nginx start
   sudo nginx -s reload
 EOF

@@ -26,7 +26,6 @@ ssh $server << EOF
   fi
   sudo apt-get install -y git
   git clone --recursive $git_url
-  #crontab -u ubuntu /home/ubuntu/cdo-curriculum/build_scripts/deploy.cron
 EOF
 
 scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh
