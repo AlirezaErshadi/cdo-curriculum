@@ -35,7 +35,7 @@ Set Up
 ### Set up Dashboard
 1. cd ../dashboard
 2. Install brew packages (**follow instructions from mysql to set it up as a daemon, and rbenv info to .profile**)
-    - brew install rbenv git ruby-build mysql imagemagick
+    - brew install rbenv git ruby-build mysql
     - for mysql
         1. To have launchd start mysql at login:
             + ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
