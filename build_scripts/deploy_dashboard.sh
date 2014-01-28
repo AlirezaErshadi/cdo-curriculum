@@ -27,6 +27,8 @@ fi
 
 source $secrets/exports
 
+git fetch origin --tags
+git reset --hard origin/master
 git submodule update --init --remote --checkout $GIT_ROOT/projects/*
 git add projects
 git commit -m "Updated submodules with latest master commit from origin." -- projects || true
