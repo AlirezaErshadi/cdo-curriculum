@@ -1,4 +1,5 @@
 GIT_ROOT=`git rev-parse --show-toplevel`
+PROJECTS="$GIT_ROOT/projects"
 if [ $# -lt 1 ]
 then
   echo "usage: $0 <server>"
@@ -10,8 +11,8 @@ fi
 server=$1
 
 scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh/
-scp -r $GIT_ROOT/dashboard/scripts/archive $server:/tmp/
-scp -r $GIT_ROOT/dashboard/config/nginx-archive.conf $server:/tmp/
+scp -r $PROJECTS/dashboard/scripts/archive $server:/tmp/
+scp -r $PROJECTS/dashboard/config/nginx-archive.conf $server:/tmp/
 scp $GIT_ROOT/build_scripts/archive.cron $server:/tmp/
 
 ssh $server << EOF

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GIT_ROOT=`git rev-parse --show-toplevel`
+PROJECTS="$GIT_ROOT/projects"
 source $GIT_ROOT/build_scripts/utility.sh
 
 if [ $# -lt 1 ]
@@ -17,7 +18,7 @@ else
   secrets=$2
 fi
 
-blockly=$GIT_ROOT/blockly
+blockly=$PROJECTS/blockly
 
 if [ ! -d $secrets ]; then
   echo "Cannot find cdo-secrets at path: $secrets"
@@ -29,7 +30,7 @@ source $secrets/exports
 git submodule update
 
 $GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core; error_check
-cp $GIT_ROOT/blockly-core/blockly_compressed.js $GIT_ROOT/blockly/lib/blockly; error_check
+cp $PROJECTS/blockly-core/blockly_compressed.js $PROJECTS/blockly/lib/blockly; error_check
 $GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
 
 (

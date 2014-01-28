@@ -2,6 +2,7 @@
 # in which case we run their build script.
 
 GIT_ROOT=`git rev-parse --show-toplevel`
+PROJECTS="$GIT_ROOT/projects"
 source $GIT_ROOT/build_scripts/utility.sh
 
 if [ -z "$1" ]
@@ -22,7 +23,7 @@ last_deploy_time=$(time_of_commit $last_deploy_commit)
 
 # check if last_commit is newer than last_tagged_commit
 (
-  cd $GIT_ROOT/$1
+  cd $PROJECTS/$1
   last_commit_time=`git log -1 --format="%at"`
   if [[ last_commit_time -gt last_deploy_time ]] ; then
     ./deploy.sh # Tell submodule to build itself.

@@ -16,3 +16,24 @@
 [submodule "closure-library-read-only"]
 	path = closure-library-read-only
 	url = https://code.google.com/p/closure-library/
+[submodule "projects/blockly"]
+	path = projects/blockly
+	url = https://github.com/code-dot-org/blockly
+[submodule "projects/blockly-core"]
+	path = projects/blockly-core
+	url = https://github.com/code-dot-org/blockly-core
+[submodule "projects/dashboard"]
+	path = projects/dashboard
+	url = https://github.com/code-dot-org/dashboard
+[submodule "projects/cdo-i18n"]
+	path = projects/cdo-i18n
+	url = https://github.com/code-dot-org/cdo-i18n
+[submodule "projects/closure-library"]
+	path = projects/closure-library
+	url = https://code.google.com/p/closure-library/
+[submodule "projects/blockly-core-i18n"]
+	path = projects/blockly-core-i18n
+	url = https://github.com/code-dot-org/blockly-core-i18n
+[submodule "projects/closure-library-read-only"]
+	path = projects/closure-library-read-only
+	url = https://code.google.com/p/closure-library/
