@@ -27,7 +27,9 @@ fi
 
 source $secrets/exports
 
-git submodule update
+git submodule update --init --remote --checkout $GIT_ROOT/projects/*
+git add projects
+git commit -m "Updated submodules with latest master commit from origin." -- projects || true
 
 $GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core; error_check
 cp $PROJECTS/blockly-core/blockly_compressed.js $PROJECTS/blockly/lib/blockly; error_check

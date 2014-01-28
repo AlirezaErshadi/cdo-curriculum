@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GIT_ROOT=`git rev-parse --show-toplevel`
+SERVERS="$GIT_ROOT/build_scripts/servers"
 
 if [ $# -lt 1 ]
 then
@@ -44,7 +45,7 @@ do
  echo "Waiting for $public_dns to respond."
  sleep 3
 done
-$ssh_cmd $public_dns 'sudo bash -s' < $GIT_ROOT/build_scripts/apt_packages.sh
-$ssh_cmd $public_dns 'sudo bash -s' < $GIT_ROOT/build_scripts/packages.sh
+$ssh_cmd $public_dns 'sudo bash -s' < $SERVERS/apt_packages.sh
+$ssh_cmd $public_dns 'sudo bash -s' < $SERVERS/packages.sh
 
 echo $public_dns
