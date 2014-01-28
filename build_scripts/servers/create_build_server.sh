@@ -19,7 +19,8 @@ ssh $server << EOF
     libexpat1-dev \
     gettext \
     libz-dev \
-    libssl-dev
+    libssl-dev \
+    rbenv
   if [[ ! -d ./git-1.8.4.4 ]]; then
     wget git-core.googlecode.com/files/git-1.8.4.4.tar.gz
     tar -zxf git-1.8.4.4.tar.gz
@@ -41,7 +42,23 @@ ssh $server << EOF
   fi
   sudo apt-get install -y git
   git clone --recursive $git_url
+  if ! command -v rbenv ; then
+    curl https://raw.github.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
+    echo "export RBENV_ROOT=\"${HOME}/.rbenv\"
+      if [ -d \"${RBENV_ROOT}\" ]; then
+        export PATH=\"${RBENV_ROOT}/bin:${RBENV_ROOT}/shims:${PATH}\"
+        eval \"$(rbenv init -)\"
+      fi
+      $(cat ~/.bashrc)" > ~/.bashrc
+    source ~/.bashrc
+    rbenv rehash
+    gem install rdoc
+    gem install bundler
+    gem install rake 
+    rbenv rehash
+  fi
 EOF
 
 scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh
+ssh $server "eval `ssh-agent -s`; ssh-add ~/.ssh/production-code-org.pem"
 scp -r $GIT_ROOT/../cdo-secrets $server:/home/ubuntu
