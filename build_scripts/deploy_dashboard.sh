@@ -31,7 +31,7 @@ git fetch origin --tags
 git reset --hard origin/master
 git submodule update --init --remote --checkout $PROJECTS
 git add $PROJECTS
-git commit -m "Updated submodules with latest master commit from origin." -- projects || true
+git commit -m "Updated submodules with latest master commit from origin." -- $PROJECTS || true
 git push -f origin master
 
 $GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core; error_check
