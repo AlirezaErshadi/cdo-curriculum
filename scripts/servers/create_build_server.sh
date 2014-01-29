@@ -9,7 +9,7 @@ then
 fi
 
 server=$1
-git_url=`git config --get remote.origin.url`
+git_url=git@github.com:code-dot-org/cdo-curriculum.git
 GIT_ROOT=`git rev-parse --show-toplevel`
 
 
@@ -27,8 +27,8 @@ ssh $server << EOF
     cd git-1.8.4.4
     make prefix=/usr/local all
     sudo make prefix=/usr/local install
-    git config --global user.name "Dashboard-build"
-    git config --global user.email site@code.org
+    git config --global user.name "dashboard-build"
+    git config --global user.email site+deploydashboard@code.org
   fi
   if [[ ! -d node-0.10.20 ]]; then
     wget https://s3.amazonaws.com/cdo-dist/nodejs/nodejs-v0.10.20.tar.gz
@@ -62,3 +62,6 @@ EOF
 scp ~/.ssh/production-code-org.pem $server:/home/ubuntu/.ssh
 ssh $server "eval `ssh-agent -s`; ssh-add ~/.ssh/production-code-org.pem"
 scp -r $GIT_ROOT/../cdo-secrets $server:/home/ubuntu
+
+ssh $server ssh-keygen -t rsa -f /home/ubuntu/.ssh/id_rsa -C "site+deploydashboard@code.org"
+echo "You must manually enter the machine's ssh key into github."
