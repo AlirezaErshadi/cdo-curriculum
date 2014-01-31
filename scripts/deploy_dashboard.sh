@@ -2,7 +2,7 @@
 
 GIT_ROOT=`git rev-parse --show-toplevel`
 PROJECTS="$GIT_ROOT/projects"
-source $GIT_ROOT/build_scripts/utility.sh
+source $GIT_ROOT/scripts/utility.sh
 
 if [ $# -lt 1 ]
 then
@@ -34,9 +34,9 @@ git add $PROJECTS
 git commit -m "Updated submodules with latest master commit from origin." -- $PROJECTS || true
 git push -f origin master
 
-$GIT_ROOT/build_scripts/deploy_submodule.sh blockly-core; error_check
+$GIT_ROOT/scripts/deploy_submodule.sh blockly-core; error_check
 cp $PROJECTS/blockly-core/blockly_compressed.js $PROJECTS/blockly/lib/blockly; error_check
-$GIT_ROOT/build_scripts/deploy_submodule.sh blockly; error_check
+$GIT_ROOT/scripts/deploy_submodule.sh blockly; error_check
 
 (
   cd $PROJECTS/dashboard

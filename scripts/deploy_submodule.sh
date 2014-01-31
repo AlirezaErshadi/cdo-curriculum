@@ -3,7 +3,7 @@
 
 GIT_ROOT=`git rev-parse --show-toplevel`
 PROJECTS="$GIT_ROOT/projects"
-source $GIT_ROOT/build_scripts/utility.sh
+source $GIT_ROOT/scripts/utility.sh
 
 if [ -z "$1" ]
 then
