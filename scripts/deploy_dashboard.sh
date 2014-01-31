@@ -29,7 +29,7 @@ source $secrets/exports
 
 git fetch origin --tags
 git reset --hard origin/master
-git submodule update --init --remote --checkout $PROJECTS
+git submodule update --init --remote --checkout -f $PROJECTS
 git add $PROJECTS
 git commit -m "Updated submodules with latest master commit from origin." -- $PROJECTS || true
 git push -f origin master
