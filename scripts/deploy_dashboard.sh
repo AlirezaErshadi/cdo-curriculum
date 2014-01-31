@@ -27,7 +27,7 @@ fi
 
 source $secrets/exports
 
-git fetch origin --tags
+git fetch origin
 git reset --hard origin/master
 git submodule update --init --remote --checkout -f $PROJECTS
 git add $PROJECTS
