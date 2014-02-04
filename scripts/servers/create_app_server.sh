@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GIT_ROOT=`git rev-parse --show-toplevel`
-SERVERS="$GIT_ROOT/build_scripts/servers"
+SERVERS="$GIT_ROOT/scripts/servers"
 
 if [ $# -lt 1 ]
 then
