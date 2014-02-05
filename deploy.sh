@@ -1,7 +1,7 @@
 DEPLOY_TO=build.code.org
 
 usage () {
-  echo "Usage: $0 <staging|production|test>"
+  echo "Usage: $0 <staging|production|private>"
   exit 1
 }
 
@@ -9,7 +9,7 @@ if [[ $# -lt 1 ]]; then
   usage
 fi
 
-if [[ !($1 == "production" || $1 == "staging" || $1 == "test") ]]; then
+if [[ !($1 == "production" || $1 == "staging" || $1 == "private") ]]; then
   usage
 fi
 
