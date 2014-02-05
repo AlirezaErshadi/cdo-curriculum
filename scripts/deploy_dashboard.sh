@@ -37,6 +37,7 @@ git push -f origin master
 $GIT_ROOT/scripts/deploy_submodule.sh blockly-core; error_check
 cp $PROJECTS/blockly-core/blockly_compressed.js $PROJECTS/blockly/lib/blockly; error_check
 $GIT_ROOT/scripts/deploy_submodule.sh blockly; error_check
+cp $PROJECTS/blockly/.cache_bust $PROJECTS/dashboard; error_check
 
 (
   cd $PROJECTS/dashboard
