@@ -82,6 +82,8 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
 
 ## Submitting Pull Requests
 
+If you do not have repository privileges, you can [create a fork and issue a pull request](https://help.github.com/articles/using-pull-requests) from it.
+
 1. Checkout a new branch for a new feature
     - `git checkout -b branch_name`
 2. Develop the new feature and push the changes to **your** repository
