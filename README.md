@@ -29,7 +29,7 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
     - `grunt`
         + you can safely ignore any test timeouts
 5. Run with live-reload server
-    - `grunt dev`
+    - `MOOC_DEV=1 grunt dev`
     - Go to [http://localhost:8000](http://localhost:8000) to see the blockly-only mode.
     - If you get the error `Uncaught Error: Cannot find module 'ejs'`, you may need to swap out an old version of your node-browserify's browserify module. For now, contact Brent for an old copy.
 
