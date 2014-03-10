@@ -20,7 +20,7 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
 
 1. `cd projects/blockly`
 2. Install Homebrew (OSX)
-    - `ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"`
+    - `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
 2. `npm install -g grunt-cli`
 3. Install the node-canvas dependencies ([OS X instructions](https://github.com/LearnBoost/node-canvas/wiki/Installation---OSX)
     - OS X: as noted in the install guide, you may need to install the libpng [OS X binary](http://ethan.tira-thompson.com/Mac_OS_X_Ports.html)
