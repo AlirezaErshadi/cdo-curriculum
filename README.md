@@ -64,7 +64,7 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
     - `rbenv local 2.0.0-p247`
 
 4. Install core gems (say “Yes” if asked to overwrite system rake)
-    - `gem install bundle rake`
+    - `gem install bundle rake mailcatcher`
 
 5. Rehash may be required to get new tools in the path
     - `rbenv rehash`
@@ -81,7 +81,10 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
 8. Configure Dashboard to use your development version of Blockly
     - `rake blockly:dev['../blockly']`
 
-9. Start rails.
+9. Start [mailcatcher](http://mailcatcher.me/) (installed during core gem install phase)
+    - `mailcatcher`
+
+10. Start rails.
     - `rails s`
     - Go to [http://localhost:3000](http://localhost:3000) to see the Blockly running within Dashboard.
 
