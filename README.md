@@ -15,14 +15,14 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
 1. Checkout the repository as well as submodules
   - `git clone --recursive https://github.com/code-dot-org/cdo-curriculum.git`
 2. Install [nodejs](http://nodejs.org/download/)
+3. (OSX) Install Homebrew
+    - `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
 
 ### Set up Blockly
 
-1. `cd projects/blockly`
-2. Install Homebrew (OSX)
-    - `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
-2. `npm install -g grunt-cli`
-3. Install the node-canvas dependencies ([OS X instructions](https://github.com/LearnBoost/node-canvas/wiki/Installation---OSX)
+1. `cd <repo_dir>/projects/blockly`
+2. Install the [Grunt CLI](http://gruntjs.com/getting-started#installing-the-cli) (you may need to prefix with `sudo`): `npm install -g grunt-cli`
+3. Install the [node-canvas](https://github.com/LearnBoost/node-canvas) dependencies (Instructions for [OS X](https://github.com/LearnBoost/node-canvas/wiki/Installation---OSX), [Ubuntu](https://github.com/LearnBoost/node-canvas/wiki/Installation---Ubuntu))
     - OS X: as noted in the install guide, you may need to install the libpng [OS X binary](http://ethan.tira-thompson.com/Mac_OS_X_Ports.html)
 4. Build
     - `npm install`
@@ -35,10 +35,11 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
 
 ### Set up Dashboard
 
-1. `cd ../dashboard`
-2. Install brew packages (**follow instructions from mysql to set it up as a daemon, and rbenv info to .profile**)
-    - `brew install rbenv git ruby-build mysql`
-    - for mysql
+1. `cd <repo_dir>/projects/dashboard`
+2. Install Ruby (using [rbenv](https://github.com/sstephenson/rbenv#installation)) and MySQL
+    - OSX: Use Homebrew to install:
+      + `brew install rbenv git ruby-build mysql`
+      + configure mysql:
         1. To have launchd start mysql at login:
             + `ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents`
         2. Then to load mysql now:
@@ -47,12 +48,17 @@ This is the root (umbrella) repository for the code.org branded curriculum. The 
             + `mysql.server start`
         4. To connect:
             + `mysql -uroot`
-
-    - for rbenv add this to ~/.profile
+      + to configure rbenv, add this to ~/.profile
         1. `if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi`
         2. then `source ~/.profile`
+    - Ubuntu:
+      + install MySQL packages (leave root password blank when prompted): `sudo apt-get install mysql-client mysql-server libmysqlclient-dev`
+      + Start service (should auto-start on system boot): `sudo start mysql`
+      + To connect:
+        - `mysql`
+      + Since the repository packages are out of date, you need to install rbenv and ruby-build from source (follow these [instructions](http://gorails.com/setup#ruby-rbenv))
 
-3. Setup rbenv and ruby (takes a while)
+3. Install ruby version through rbenv (takes a while)
     - `rbenv install 2.0.0-p247`
     - `rbenv global 2.0.0-p247`
     - `rbenv local 2.0.0-p247`
